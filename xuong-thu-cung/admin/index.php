@@ -20,7 +20,8 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
 
-// route 
+// route danh mục
     'danh-muc' => (new AdminDanhMucController())->danhSachDanhMuc(),
-
+    'form-them-danh-muc' => (new AdminDanhMucController())->formAddDanhMuc(),
+    'them-danh-muc' => (new AdminDanhMucController())->postAddDanhMuc(),
 };
