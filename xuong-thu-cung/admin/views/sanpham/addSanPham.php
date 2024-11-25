@@ -30,55 +30,59 @@
               <div class="card-header">
                 <h3 class="card-title">Thêm sản phẩm</h3>
               </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form action="<?= BASE_URL_ADMIN . '?act=them-san-pham' ?>" method="POST">
+
+              <form action="<?= BASE_URL_ADMIN . '?act=them-san-pham' ?>" method="POST" enctype="multipart/form-data">
                 <div class="card-body row">
                   <div class="form-group col-12">
-                    <label>Tên sản phẩm </label>
+                    <label>Tên sản phẩm</label>
                     <input type="text" class="form-control" name="ten_san_pham" placeholder="Nhập tên sản phẩm">
-                    <?php if(isset($errors['ten_san_pham'])) { ?>
-                        <p class="text-danger"><?= $errors['ten_san_pham'] ?></p>
+                    <?php if(isset($_SESSION['error']['ten_san_pham'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['ten_san_pham'] ?></p>
                     <?php } ?>
                   </div>
 
                   <div class="form-group col-6">
                     <label>Giá sản phẩm</label>
                     <input type="number" class="form-control" name="gia_san_pham" placeholder="Nhập Giá sản phẩm">
-                    <?php if(isset($errors['gia_san_pham'])) { ?>
-                        <p class="text-danger"><?= $errors['gia_san_pham'] ?></p>
+                    <?php if(isset($_SESSION['error']['gia_san_pham'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['gia_san_pham'] ?></p>
                     <?php } ?>
                   </div>
 
                   <div class="form-group col-6">
                     <label>Giá khuyến mãi</label>
                     <input type="number" class="form-control" name="gia_khuyen_mai" placeholder="Nhập Giá khuyến mãi">
-                    <?php if(isset($errors['gia_khuyen_mai'])) { ?>
-                        <p class="text-danger"><?= $errors['gia_khuyen_mai'] ?></p>
+                    <?php if(isset($_SESSION['error']['gia_khuyen_mai'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['gia_khuyen_mai'] ?></p>
                     <?php } ?>
                   </div>
 
                   <div class="form-group col-6">
                     <label>Hình ảnh</label>
-                    <input type="file" class="form-control" name="hinh_anh" placeholder="Nhập Hình ảnh">
-                    <?php if(isset($errors['hinh_anh'])) { ?>
-                        <p class="text-danger"><?= $errors['hinh_anh'] ?></p>
+                    <input type="file" class="form-control" name="hinh_anh">
+                    <?php if(isset($_SESSION['error']['hinh_anh'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['hinh_anh'] ?></p>
                     <?php } ?>
+                  </div>
+
+                  <div class="form-group col-6">
+                    <label>Album ảnh</label>
+                    <input type="file" class="form-control" name="img_array[]" multiple>
                   </div>
 
                   <div class="form-group col-6">
                     <label>Số lượng</label>
                     <input type="number" class="form-control" name="so_luong" placeholder="Nhập Số lượng">
-                    <?php if(isset($errors['so_luong'])) { ?>
-                        <p class="text-danger"><?= $errors['so_luong'] ?></p>
+                    <?php if(isset($_SESSION['error']['so_luong'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['so_luong'] ?></p>
                     <?php } ?>
                   </div>
 
                   <div class="form-group col-6">
                     <label>Ngày nhập</label>
                     <input type="date" class="form-control" name="ngay_nhap" placeholder="Nhập Ngày nhập">
-                    <?php if(isset($errors['ngay_nhap'])) { ?>
-                        <p class="text-danger"><?= $errors['ngay_nhap'] ?></p>
+                    <?php if(isset($_SESSION['error']['ngay_nhap'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['ngay_nhap'] ?></p>
                     <?php } ?>
                   </div>
 
@@ -92,9 +96,29 @@
                         <option value="<?= $danhMuc['id'] ?>"><?= $danhMuc['ten_danh_muc'] ?></option>
                       <?php endforeach ?>
                     </select>       
-                    <?php if(isset($errors['so_luong'])) { ?>
-                        <p class="text-danger"><?= $errors['so_luong'] ?></p>
+                    <?php if(isset($_SESSION['error']['danh_muc_id'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['danh_muc_id'] ?></p>
                     <?php } ?>
+                  </div>
+
+                  <div class="form-group col-6">
+                    <label>Trạng thái</label>
+                    <select class="form-control" name="trang_thai" id="exampleFormControlSelect1">
+
+                      <option selected disabled>Chọn danh mục sản phẩm</option>
+                      <option value="1">Còn bán</option>
+                      <option value="2">Dừng bán</option>
+
+                      
+                    </select>       
+                    <?php if(isset($_SESSION['error']['trang_thai'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['trang_thai'] ?></p>
+                    <?php } ?>
+                  </div>
+
+                  <div class="form-group col-12">
+                    <label>Mô tả</label>
+                    <textarea name="mo_ta" id="" class="form-control" placeholder="Nhập mô tả"></textarea>
                   </div>
 
                   

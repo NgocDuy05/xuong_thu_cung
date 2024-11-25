@@ -24,5 +24,33 @@ function connectDB() {
 
 
 // Thêm file
-// Sửa file
+function uploadFile($file, $folderUpload){
+    $pathStorage = $folderUpload . time() . $file['name'];
+
+    $from = $file['tmp_name'];
+    $to = PATH_ROOT . $pathStorage;
+
+    if(move_uploaded_file($from, $to)){
+        return $pathStorage;
+    }
+    return null;
+}
+
+// Xóa file
+function deleteFile($file){
+    $pathDelete = PATH_ROOT . $file;
+    if(file_exists($pathDelete)) {
+        unlink($pathDelete);
+    }
+}
+
+// Xóa session sau khi load trang
+function deleteSessionError(){
+    if(isset($_SESSION['flash'])) {
+        // Hủy session sau khi đã tải trang
+        unset($_SESSION['flash']);
+        session_unset();
+        session_destroy();
+    }
+}
 // Debug
