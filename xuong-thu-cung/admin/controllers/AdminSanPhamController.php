@@ -2,10 +2,12 @@
 class AdminSanPhamController {
 
     public $modelSanPham;
+    public $modelDanhMuc;
 
     public function __construct()
     {
         $this->modelSanPham = new AdminSanPham();
+        $this->modelDanhMuc = new AdminDanhMuc();
     }
 
     public function danhSachSanPham(){
@@ -15,10 +17,12 @@ class AdminSanPhamController {
         require_once 'views/sanpham/listSanPham.php';
     }
 
-    // public function formAddDanhMuc() {
-    //     // hàm này dùng để hiển thì form nhập
-    //     require_once 'views/danhmuc/addDanhMuc.php';
-    // }
+    public function formAddSanPham() {
+        // hàm này dùng để hiển thì form nhập
+        $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
+        
+        require_once 'views/sanpham/addSanPham.php';
+    }
 
     // public function postAddDanhMuc() {
     //     // hàm này dùng để xử lý dữ liệu

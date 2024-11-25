@@ -38,22 +38,34 @@
                   <thead>
                   <tr>
                     <th>STT</th>
-                    <th>Tên danh mục</th>
-                    <th>Mô tả</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Ảnh sản phẩm</th>
+                    <th>Giá tiền</th>
+                    <th>Số lượng</th>
+                    <th>Danh mục</th>
+                    <th>Trạng thái</th>
                     <th>Thao tác</th>
                   </tr>
                   </thead>
                   <tbody>
-                    <?php foreach($listDanhMuc as $key=>$danhMuc): ?>
+                    <?php foreach($listSanPham as $key=>$sanPham) : ?>
                   <tr>
                       <td><?= $key+1 ?></td>
-                      <td><?= $danhMuc['ten_danh_muc'] ?></td>
-                      <td><?= $danhMuc['mo_ta'] ?></td>
+                      <td><?= $sanPham['ten_san_pham'] ?></td>
                       <td>
-                        <a href="<?= BASE_URL_ADMIN . '?act=form-sua-danh-muc&id_danh_muc=' . $danhMuc['id'] ?>">
+                        <img src="<?= BASE_URL .  $sanPham['hinh_anh'] ?>" style="width:100px" alt=""
+                        onerror="this.onerror=null; this.src='https://st.quantrimang.com/photos/image/2020/06/19/Hinh-Nen-Meo-Ngao-38.jpg'";
+                        >
+                      </td>
+                      <td><?= $sanPham['gia_san_pham'] ?></td>
+                      <td><?= $sanPham['so_luong'] ?></td>
+                      <td><?= $sanPham['ten_danh_muc'] ?></td>
+                      <td><?= $sanPham['trang_thai'] == 1 ? 'Còn bán':'Dừng bán' ?></td>
+                      <td>
+                        <a href="<?= BASE_URL_ADMIN . '?act=form-sua-san-pham&id_san_pham=' . $sanPham['id'] ?>">
                           <button class="btn btn-warning">Sửa</button>
                         </a>
-                        <a href="<?= BASE_URL_ADMIN . '?act=xoa-danh-muc&id_danh_muc=' . $danhMuc['id'] ?>"
+                        <a href="<?= BASE_URL_ADMIN . '?act=xoa-san-pham&id_san_pham=' . $sanPham['id'] ?>"
                          onclick="return confirm('Bạn có đồng ý xóa không?')">
                           <button class="btn btn-danger">Xóa</button>
                         </a>
@@ -62,9 +74,13 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>STT</th>
-                    <th>Tên danh mục</th>
-                    <th>Mô tả</th>
+                      <th>STT</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Ảnh sản phẩm</th>
+                    <th>Giá tiền</th>
+                    <th>Số lượng</th>
+                    <th>Danh mục</th>
+                    <th>Trạng thái</th>
                     <th>Thao tác</th>
                   </tr>
                   </tfoot>
